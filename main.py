@@ -49,7 +49,7 @@ client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 wea, temperature, low, high = get_weather()
 def get_cloth():
-  if temperature > 25:
+  if temperature >= 25:
     return "宝宝记得穿短袖"
   elif temperature > 15 and temperature <= 24:
     return "宝宝记得穿外套和牛仔裤"
