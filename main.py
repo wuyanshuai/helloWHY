@@ -28,6 +28,7 @@ def get_tip():
   url = "http://api.tianapi.com/tianqi/index?key=d728c6d14fdbbdb364f0409fdacd398e&city=杭州市"
   res = requests.get(url).json()
   tip = res['newslist'][0]['tips']
+  return tip
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
