@@ -26,7 +26,7 @@ def get_weather():
 
 def get_tip():
   url = "http://api.tianapi.com/tianqi/index?key=d728c6d14fdbbdb364f0409fdacd398e&city=杭州市"
-  res = request.get(url).json()
+  res = requests.get(url).json()
   tip = res['newlist'][0]['tips']
 
 def get_count():
