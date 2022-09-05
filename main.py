@@ -24,6 +24,11 @@ def get_weather():
   weather = res['data']['list'][0]
   return weather['weather'], math.floor(weather['temp']), math.floor(weather['low']), math.floor(weather['high'])
 
+def get_tip():
+  url = "http://api.tianapi.com/tianqi/index?key=d728c6d14fdbbdb364f0409fdacd398e&city=杭州市"
+  res = request.get(url).json()
+  tip = res['newlist'][0]['tips']
+
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
@@ -56,6 +61,6 @@ def get_cloth():
   elif temperature > 0 and  temperature <= 15: 
     return "宝宝记得穿羊毛大衣"
   else : return "宝宝记得穿羽绒服"
-data = {"weather":{"value":wea, "color":get_random_color()},"low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()} ,"cloth":{"value":get_cloth(), "color":get_random_color()}, "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"weather":{"value":wea, "color":get_random_color()},"low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()} ,"cloth":{"value":get_tip(), "color":get_random_color()}, "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
